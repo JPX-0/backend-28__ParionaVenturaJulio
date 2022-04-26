@@ -65,7 +65,7 @@ app.set("view engine", "ejs");
 //--------------------------------------------
 // rutas del servidor API
 app.use(routes);
-app.use("/apirandom", apis);
+app.use(apis);
 
 //--------------------------------------------
 // inicio el servidor

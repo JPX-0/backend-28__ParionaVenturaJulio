@@ -1,11 +1,8 @@
-import process from "process";
-
-const count = (qty) => { // 100000000
+const count = (qty = 100000000) => {
   const dataRandom = [];
   for(let i = 0; i < qty; i++) {
     dataRandom.push(Math.floor(Math.random() * 1000) + 1);
   }
-  console.log("dataRandom: ", dataRandom);
   const dataRepeat = [];
   const dataObject = {};
   for (let i = 0; i < dataRandom.length; i++) {
@@ -15,13 +12,12 @@ const count = (qty) => { // 100000000
       dataObject[`${elem}`] = 1;
     } else dataObject[`${elem}`]++;
   }
-  console.log("dataRepeat: ", dataRepeat);
-  console.log("dataObject: ", dataObject);
+  return dataObject;
 };
-count(10);
 
-process.on("data", () => {
-  // console.log("data: ", data);
-  count(1);
-  process.send("a");
+process.on("message", (data) => { // recibe la data
+  let num;
+  if(isNaN(data)) num = undefined;
+  else num = data;
+  process.send(count(num)); // envia la data
 });

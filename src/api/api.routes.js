@@ -1,6 +1,5 @@
 import express from 'express';
 import randomRoutes from './random/random.routes.js';
-// import router from "../routers/app.routes.js";
 
 const router = express.Router();
 

@@ -11,7 +11,7 @@ const getInfo = (req, res) => {
     platformName: process.platform, 
     versionNode: process.version, 
     rss: process.memoryUsage().rss, 
-    path: `"./${dataJson.main}"`,
+    path: process.argv[0],
     processId: process.pid, 
     projectFolder: `"${process.cwd()}"`
   });
